@@ -13,21 +13,19 @@ public class Main {
 	 *  쩰리가 가장 오른쪽 가장 아래칸에 도달하는 순간 쩰리 승리, 게임 종료
 	 *  한번에 이동할 수 있는 칸의 수 : 현재 밟은 칸에 쓰인 수 만큼 (초과, 미만X)
 	 *  
-	 *  
-	 * #풀이시간 : 
-	 * #메모리/시간 : 
+	 * #풀이시간 : 1시간
+	 * #메모리/시간 : 14252kb/124ms
 	 * #메인 접근법
-	 * 	1. 끝점에 도달하면 표시하는 flag로 출력
+	 * 	1. 성공,실패 표시하는 flag로 출력
 	 *  2. 이동할 때 마다 오른쪽 or 아래쪽으로 칸에 쓰인 수 만큼 가야됨
+	 *  -> 현재 칸에 연결된 노드로 이동하는 것 같은 동작
 	 *  -> 현재 칸 기준으로 두 방향 모두 구역 밖으로 나간다 -> 실패
-	 *  -> 흠...그냥 도착지 기준으로 위칸, 왼쪽칸 둘다 2 이상이면 실패 아닌가..?
 	 *  -> 현재 칸이 0이다 -> 실패로 하고 이전으로 돌아감
 	 *  3. DFS로 풀어보자
 	 */
 	
 	static int N;
 	static int[][] board;
-	static boolean[][] visited;
 	static boolean canWin;
 	
 	public static void main(String[] args) throws Exception {
@@ -36,7 +34,6 @@ public class Main {
 		N = Integer.parseInt(br.readLine());
 		
 		board = new int[N][N];
-		visited = new boolean[N][N];
 		canWin = false;
 		
 		for(int i = 0; i < N; i++) {
@@ -69,16 +66,11 @@ public class Main {
 			return;
 		}
 		
-		//지금 칸에 방문 표시
-//		visited[r][c] = true;
-		
 		//재귀 부분
 		//현재칸 숫자
 		int move = board[r][c];
 		
-		dfs(r, c+move); //오른쪽 이동
-		dfs(r+move, c); //아래쪽 이동
+		dfs(r, c + move); //오른쪽 이동
+		dfs(r + move, c); //아래쪽 이동
 	}
-	
-	
 }
