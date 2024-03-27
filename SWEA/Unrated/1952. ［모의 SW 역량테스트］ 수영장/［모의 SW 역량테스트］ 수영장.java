@@ -37,7 +37,7 @@ public class Solution{
 	//idx: 현재 달, total: 요금
 	static void dfs(int idx, int total) {
 		//기저조건
-		if(idx == 12) {
+		if(idx >= 12) {
 			min = Math.min(total, min); //최솟값 갱신
 			return;
 		}
@@ -48,11 +48,7 @@ public class Solution{
 		//1달 이용권으로 계산
 		dfs(idx + 1,  total + month);
 		//3달 이용권으로 계산
-		if(idx + 3 > 12) {
-			dfs(12, total + season);
-		} else {
-			dfs(idx + 3, total + season);
-		}
+		dfs(idx + 3, total + season);
 		//1년 이용권으로 계산
 		dfs(12, total + year);
 	}
