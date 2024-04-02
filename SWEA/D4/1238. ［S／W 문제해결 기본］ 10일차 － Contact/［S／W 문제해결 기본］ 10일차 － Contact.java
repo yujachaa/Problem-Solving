@@ -64,7 +64,6 @@ public class Solution {
 		
 		while(!queue.isEmpty()) {
 			Node now = queue.poll();
-//			if(visited[now.num])continue;
 			visited[now.num] = true;
 			
 			if(now.depth > maxDepth) {
