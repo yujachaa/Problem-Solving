@@ -51,11 +51,11 @@ public class Solution {
 			return;
 		}
 
-		if (row == D) { // 마지막 행 까지 약품 주입 결정 했으면,
-			if (Pass())
-				min = Math.min(min, cnt); // 최솟값 갱신하고 끝
+		if (row == D)  // 마지막 행 까지 약품 주입 결정 했으면, 끝
 			return;
-		}
+		if (cnt > min)  //이미 알고있는 최솟값보다 커지면, 끝
+			return;
+		
 
 		// 재귀부분
 		
